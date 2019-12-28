@@ -1,2 +1,2 @@
 # auto-made-it
-git Repository Hosting various utility scripts and programs
+Git repository hosting various utility scripts and programs for easy access on any system
