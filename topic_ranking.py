@@ -50,6 +50,7 @@ for i in range(1, len(header) + 1):
         ranks[i] = 0
 
 # Print rankings
-print("Here are the rankings:")
+print("Topic Ranking:")
 for i, ranking in enumerate(rankings):
-    print("Topic #{}: {}".format(i + 1, header[ranking]))
+    topic_title = header[ranking].split("[",)[1][:-1]
+    print("Topic #{}: {}".format(i + 1, topic_title))
