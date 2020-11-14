@@ -20,6 +20,8 @@ with open("data.csv") as data_file:
 
 header = total[0, 1:]
 data = np.array(total[1:, 1:], dtype=np.int32)
+topic_range = range(1, len(header) + 1)
+num_topics = len(header)
 
 # Process data into a map with this form:
 # {topic_index: {rank1: count1, rank2: count2}, ...}
@@ -33,24 +35,18 @@ for topic_index, ranks in processed.items():
         if i not in ranks:
             ranks[i] = 0
 
-
-# Creating rankings
-rankings = []
-for i in range(1, len(header) + 1):
-    max_topic = 0
-    max_count = 0
-    for topic_index, ranks in processed.items():
-        if i in ranks and ranks[i] > max_count:
-            max_topic = topic_index
-            max_count = ranks[i]
-    rankings.append(max_topic)
-    processed.pop(max_topic, None)
-    for topic_index, ranks in processed.items():
-        ranks[i+1] += ranks[i]*3
-        ranks[i] = 0
+# Compile weighted scores
+scores = np.zeros(num_topics)
+for topic_index, ranks in processed.items():
+    score = 0
+    for i in range(1, len(header) + 1):
+        score += ranks[i] * (3 ** (num_topics - i))
+    scores[topic_index] = score
 
 # Print rankings
 print("Topic Ranking:")
-for i, ranking in enumerate(rankings):
-    topic_title = header[ranking].split("[",)[1][:-1]
+ranks = np.flip(scores.argsort())
+for i, topic_index in enumerate(ranks):
+    score = scores[topic_index]
+    topic_title = header[topic_index].split("[", )[1][:-1]
     print("Topic #{}: {}".format(i + 1, topic_title))
