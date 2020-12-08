@@ -16,7 +16,7 @@ Variables:
 - target: The folder where you want to store your game files
 ============================================================================= #>
 
-$link = "C:\Users\cris\AppData\Roaming\.minecraft"
+$link = "C:\Users\user\AppData\Roaming\.minecraft"
 $target = "C:\path\to\your\game\files"
 
 $gameDirs = "saves", "resourcepacks", "screenshots", "shaderpacks"
