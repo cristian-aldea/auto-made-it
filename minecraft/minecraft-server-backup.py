@@ -13,8 +13,8 @@ parser.add_argument('--num_backups', required=False, default=8,
                     help="The number of backups to keep")
 args = parser.parse_args()
 
-print("Creating diretory {}".format(args.target))
 if not os.path.exists(args.target):
+    print("Creating diretory {}".format(args.target))
     os.makedirs(args.target)
 
 # Creating path name for new backup
@@ -37,6 +37,5 @@ while len(backups) > args.num_backups:
         args.num_backups))
     backup_dir = "{}/{}".format(args.target, backups[0])
     print("Deleting \"{}\"".format(backup_dir))
-    if os.path.exists(backup_dir):
-        shutil.rmtree(backup_dir)
+    shutil.rmtree(backup_dir)
     del backups[0]
