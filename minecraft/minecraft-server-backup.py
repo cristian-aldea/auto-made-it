@@ -18,7 +18,7 @@ parser.add_argument('--source', required=True,
                     help="The location of the minecraft world folder to backup")
 parser.add_argument('--target', required=True,
                     help="The location where to save backups of the given world folder")
-parser.add_argument('--num_backups', required=False, default=10,
+parser.add_argument('--num_backups', required=False, default=10, type=int,
                     help="The number of backups to keep")
 parser.add_argument('--paper', '-p', required=False, default=False, action='store_true',
                     help="If the current backup is being done for a paper server, which stores the world save in a slightly different format")
