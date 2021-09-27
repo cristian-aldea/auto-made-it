@@ -1,3 +1,5 @@
+# Runs VLC as a mirror to a screen to workaround issue on discord
+# where sharing only one screen isn't possible
 vlc \
     --no-video-deco \
     --no-embedded-video \
