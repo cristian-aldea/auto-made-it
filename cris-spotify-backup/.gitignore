@@ -1,0 +1,6 @@
+.env
+.cache
+tracks.json
+tracks.txt
+out_all_tracks.txt
+out_dead_tracks.txt
